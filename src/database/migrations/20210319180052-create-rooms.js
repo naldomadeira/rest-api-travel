@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('hotels', {
+    await queryInterface.createTable('rooms', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -10,20 +10,21 @@ module.exports = {
 
       name: {
         type: Sequelize.STRING,
+      },
+
+      type: {
+        type: Sequelize.ENUM,
+        values: ['SGL', 'DBL', 'TLP', 'QDPL'],
+        defaultValue: 'SGL',
         allowNull: false,
       },
 
-      country: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-
-      details: {
-        type: Sequelize.STRING,
-      },
-
-      address: {
-        type: Sequelize.STRING,
+      hotel_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'hotels', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull: true,
       },
 
       active: {
@@ -45,6 +46,6 @@ module.exports = {
   },
 
   down: (queryInterface) => {
-    return queryInterface.dropTable('hotels')
+    return queryInterface.dropTable('rooms')
   },
 }
