@@ -1,0 +1,17 @@
+{
+  "name": "rest-api-travel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server",
+    "lint": "yarn eslint --fix src --ext .js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sucrase": "^3.17.1"
+  }
+}
