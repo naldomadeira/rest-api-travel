@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('coins', {
+    await queryInterface.createTable('agents', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -13,24 +13,21 @@ module.exports = {
         allowNull: false,
       },
 
-      symbol: {
+      address: {
         type: Sequelize.STRING,
-        allowNull: false,
-      },
-
-      profit: {
-        type: Sequelize.DECIMAL,
-        defaultValue: 0,
-      },
-
-      value: {
-        type: Sequelize.DECIMAL,
-        defaultValue: 0,
       },
 
       active: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
+      },
+
+      category_agent_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'categories_agents', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+        allowNull: false,
       },
 
       created_at: {
@@ -44,7 +41,8 @@ module.exports = {
       },
     })
   },
+
   down: (queryInterface) => {
-    return queryInterface.dropTable('coins')
+    return queryInterface.dropTable('agents')
   },
 }

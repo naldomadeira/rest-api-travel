@@ -8,6 +8,7 @@ class Coin extends Model {
         symbol: Sequelize.STRING,
         profit: Sequelize.DECIMAL,
         value: Sequelize.DECIMAL,
+        active: Sequelize.BOOLEAN,
       },
       {
         sequelize,
@@ -19,7 +20,17 @@ class Coin extends Model {
     return this
   }
 
-  //static associate(models) {}
+  static associate(models) {
+    this.hasMany(models.Service, {
+      foreignKey: 'coin_id',
+      as: 'services',
+    })
+
+    this.hasMany(models.Customer, {
+      foreignKey: 'coin_id',
+      as: 'customers',
+    })
+  }
 }
 
 export default Coin

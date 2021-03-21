@@ -20,6 +20,10 @@ class Room extends Model {
 
   static associate(models) {
     this.belongsTo(models.Hotel, { foreignKey: 'hotel_id', as: 'hotel' })
+    this.hasMany(models.Service, {
+      foreignKey: 'room_id',
+      as: 'services',
+    })
   }
 }
 

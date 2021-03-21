@@ -21,9 +21,17 @@ class Hotel extends Model {
   }
 
   static associate(models) {
-    Hotel.hasMany(models.Room, {
+    this.hasMany(models.Room, {
       foreignKey: 'hotel_id',
       as: 'rooms',
+    })
+    this.hasMany(models.Service, {
+      foreignKey: 'hotel_id',
+      as: 'services',
+    })
+    this.hasMany(models.HotelCategoryProfit, {
+      foreignKey: 'hotel_id',
+      as: 'HotelsCategories',
     })
   }
 }

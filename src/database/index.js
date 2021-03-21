@@ -3,9 +3,23 @@ import databaseConfig from '../config/database'
 
 import Hotel from '../app/models/Hotel'
 import Room from '../app/models/Room'
+import Coin from '../app/models/Coin'
+import Service from '../app/models/Service'
+import CategoryAgent from '../app/models/CategoryAgent'
+import Agent from '../app/models/Agent'
+import Customer from '../app/models/Customer'
+import HotelCategoryProfit from '../app/models/HotelCategoryProfit'
 
-// eslint-disable-next-line no-unused-vars
-const models = [Hotel, Room]
+const models = [
+  Hotel,
+  Room,
+  Coin,
+  Service,
+  CategoryAgent,
+  Agent,
+  Customer,
+  HotelCategoryProfit,
+]
 
 class Database {
   constructor() {

@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('coins', {
+    await queryInterface.createTable('customers', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -13,24 +13,30 @@ module.exports = {
         allowNull: false,
       },
 
-      symbol: {
+      surname: {
         type: Sequelize.STRING,
         allowNull: false,
       },
 
-      profit: {
-        type: Sequelize.DECIMAL,
-        defaultValue: 0,
+      address: {
+        type: Sequelize.STRING,
       },
 
-      value: {
-        type: Sequelize.DECIMAL,
-        defaultValue: 0,
+      phone: {
+        type: Sequelize.STRING,
       },
 
-      active: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true,
+      country: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+
+      coin_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'coins', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+        allowNull: false,
       },
 
       created_at: {
@@ -44,7 +50,8 @@ module.exports = {
       },
     })
   },
+
   down: (queryInterface) => {
-    return queryInterface.dropTable('coins')
+    return queryInterface.dropTable('customers')
   },
 }
