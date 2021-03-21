@@ -2,6 +2,14 @@ import Room from '../models/Room'
 import Hotel from '../models/Hotel'
 
 class RoomController {
+  async index(req, res) {
+    const rooms = await Room.findAll({
+      include: ['hotel'],
+    })
+
+    return res.json(rooms)
+  }
+
   async store(req, res) {
     const { hotel_id } = req.body
 

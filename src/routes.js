@@ -8,9 +8,11 @@ const router = new Router()
  */
 
 // hotels
+router.get('/hotels', HotelController.index)
 router.post('/hotels', HotelController.store)
 
 // rooms
+router.get('/rooms', RoomController.index)
 router.post('/rooms', RoomController.store)
 
 export default router
