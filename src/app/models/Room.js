@@ -5,22 +5,20 @@ class Room extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-
-        type: Sequelize.ENUM,
-
-        hotel_id: Sequelize.INTEGER,
-
+        type: Sequelize.ENUM('SGL', 'DBL', 'TLP', 'QDPL'),
         active: Sequelize.BOOLEAN,
       },
       {
         sequelize,
-
+        tableName: 'rooms',
         modelName: 'Room',
       }
     )
+
+    return this
   }
 
-  static association(models) {
+  static associate(models) {
     this.belongsTo(models.Hotel, { foreignKey: 'hotel_id', as: 'hotel' })
   }
 }
