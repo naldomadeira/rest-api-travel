@@ -28,10 +28,6 @@ class Offer extends Model {
       as: 'customer',
     })
     this.belongsTo(models.Service, { foreignKey: 'service_id', as: 'service' })
-    this.hasMany(models.Offer, {
-      foreignKey: 'offer_id',
-      as: 'offers',
-    })
   }
 }
 

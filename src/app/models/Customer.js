@@ -25,6 +25,10 @@ class Customer extends Model {
       foreignKey: 'coin_id',
       as: 'coin',
     })
+    this.hasMany(models.Offer, {
+      foreignKey: 'customer_id',
+      as: 'offers',
+    })
   }
 }
 

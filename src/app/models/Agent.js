@@ -24,7 +24,7 @@ class Agent extends Model {
       as: 'category',
     })
     this.hasMany(models.Offer, {
-      foreignKey: 'offer_id',
+      foreignKey: 'agent_id',
       as: 'offers',
     })
   }

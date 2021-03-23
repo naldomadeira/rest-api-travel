@@ -7,6 +7,8 @@ import AgentController from './app/controllers/AgentController'
 import ServiceController from './app/controllers/ServiceController'
 import CustomerController from './app/controllers/CustomerController'
 import HotelCategoryProfitController from './app/controllers/HotelCategoryProfitController'
+import ExchangeController from './app/controllers/ExchangeController'
+import OfferController from './app/controllers/OfferController'
 
 const router = new Router()
 
@@ -45,5 +47,13 @@ router.post('/hotels_categories', HotelCategoryProfitController.store)
 // customers
 router.get('/customers', CustomerController.index)
 router.post('/customers', CustomerController.store)
+
+// exchanges
+router.get('/exchanges', ExchangeController.index)
+router.post('/exchanges', ExchangeController.store)
+
+// offers
+router.get('/offers', OfferController.index)
+router.post('/offers', OfferController.store)
 
 export default router

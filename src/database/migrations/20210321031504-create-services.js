@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'rooms', key: 'id' },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        onDelete: 'CASCADE',
         allowNull: false,
       },
 
@@ -33,7 +33,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'coins', key: 'id' },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        onDelete: 'CASCADE',
         allowNull: false,
       },
 

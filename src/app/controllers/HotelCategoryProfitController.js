@@ -5,7 +5,7 @@ import HotelCategory from '../models/HotelCategoryProfit'
 class HotelCategoryProfitController {
   async index(req, res) {
     const hotelsCategories = await HotelCategory.findAll({
-      attributes: ['profit'],
+      attributes: ['id', 'profit'],
       include: [
         {
           model: Hotel,

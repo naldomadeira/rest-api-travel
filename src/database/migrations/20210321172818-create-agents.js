@@ -27,7 +27,7 @@ module.exports = {
         references: { model: 'categories_agents', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: false,
+        allowNull: true,
       },
 
       created_at: {

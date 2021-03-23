@@ -32,12 +32,17 @@ module.exports = {
         allowNull: false,
       },
 
+      active: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
+
       customer_id: {
         type: Sequelize.INTEGER,
         references: { model: 'customers', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: false,
+        allowNull: true,
       },
 
       service_id: {
@@ -45,7 +50,7 @@ module.exports = {
         references: { model: 'services', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: false,
+        allowNull: true,
       },
 
       agent_id: {
@@ -53,7 +58,7 @@ module.exports = {
         references: { model: 'agents', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: false,
+        allowNull: true,
       },
 
       created_at: {

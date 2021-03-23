@@ -4,7 +4,7 @@ import Agent from '../models/Agent'
 class AgentController {
   async index(req, res) {
     const agents = await Agent.findAll({
-      attributes: ['name', 'active', 'address'],
+      attributes: ['id', 'name', 'active', 'address'],
       include: {
         model: CategoryAgent,
         as: 'category',
