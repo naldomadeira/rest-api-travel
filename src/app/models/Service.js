@@ -20,6 +20,10 @@ class Service extends Model {
     this.belongsTo(models.Hotel, { foreignKey: 'hotel_id', as: 'hotel' })
     this.belongsTo(models.Room, { foreignKey: 'room_id', as: 'room' })
     this.belongsTo(models.Coin, { foreignKey: 'coin_id', as: 'coin' })
+    this.hasMany(models.Offer, {
+      foreignKey: 'offer_id',
+      as: 'offers',
+    })
   }
 }
 

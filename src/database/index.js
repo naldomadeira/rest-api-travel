@@ -9,6 +9,8 @@ import CategoryAgent from '../app/models/CategoryAgent'
 import Agent from '../app/models/Agent'
 import Customer from '../app/models/Customer'
 import HotelCategoryProfit from '../app/models/HotelCategoryProfit'
+import Exchange from '../app/models/Exchange'
+import Offer from '../app/models/Offer'
 
 const models = [
   Hotel,
@@ -19,6 +21,8 @@ const models = [
   Agent,
   Customer,
   HotelCategoryProfit,
+  Exchange,
+  Offer,
 ]
 
 class Database {
