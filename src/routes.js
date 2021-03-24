@@ -23,9 +23,13 @@ router.post('/hotels', HotelController.store)
 // rooms
 router.get('/rooms', RoomController.index)
 router.post('/rooms', RoomController.store)
+router.get('/rooms/:id', RoomController.show)
+router.put('/rooms/:id', RoomController.update)
+router.delete('/rooms/:id', RoomController.destroy)
 
 // coins
 router.get('/coins', CoinController.index)
+router.put('/coins/update', CoinController.updateAllCurrency)
 router.post('/coins', CoinController.store)
 
 // services
@@ -34,11 +38,17 @@ router.post('/services', ServiceController.store)
 
 // categories agents
 router.get('/categories_agents', CategoryAgentController.index)
+router.get('/categories_agents/:id', CategoryAgentController.show)
 router.post('/categories_agents', CategoryAgentController.store)
+router.put('/categories_agents/:id', CategoryAgentController.update)
+router.delete('/categories_agents/:id', CategoryAgentController.destroy)
 
 // agents
 router.get('/agents', AgentController.index)
 router.post('/agents', AgentController.store)
+router.get('/agents/:id', AgentController.show)
+router.put('/agents/:id', AgentController.update)
+router.delete('/agents/:id', AgentController.destroy)
 
 // hotels categories profit
 router.get('/hotels_categories', HotelCategoryProfitController.index)

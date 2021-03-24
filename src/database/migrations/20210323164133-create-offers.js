@@ -14,7 +14,7 @@ module.exports = {
 
       paid: {
         type: Sequelize.BOOLEAN,
-        default: false,
+        defaultValue: false,
       },
 
       price: {
