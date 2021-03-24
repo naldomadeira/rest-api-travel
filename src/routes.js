@@ -16,25 +16,14 @@ const router = new Router()
  * API
  */
 
-// hotels
-router.get('/hotels', HotelController.index)
-router.post('/hotels', HotelController.store)
-
-// rooms
-router.get('/rooms', RoomController.index)
-router.post('/rooms', RoomController.store)
-router.get('/rooms/:id', RoomController.show)
-router.put('/rooms/:id', RoomController.update)
-router.delete('/rooms/:id', RoomController.destroy)
-
 // coins
+// #swagger.tags = ['Coin']
 router.get('/coins', CoinController.index)
 router.put('/coins/update', CoinController.updateAllCurrency)
 router.post('/coins', CoinController.store)
-
-// services
-router.get('/services', ServiceController.index)
-router.post('/services', ServiceController.store)
+router.get('/coins/:id', CoinController.show)
+router.put('/coins/:id', CoinController.update)
+router.delete('/coins/:id', CoinController.destroy)
 
 // categories agents
 router.get('/categories_agents', CategoryAgentController.index)
@@ -50,13 +39,40 @@ router.get('/agents/:id', AgentController.show)
 router.put('/agents/:id', AgentController.update)
 router.delete('/agents/:id', AgentController.destroy)
 
-// hotels categories profit
-router.get('/hotels_categories', HotelCategoryProfitController.index)
-router.post('/hotels_categories', HotelCategoryProfitController.store)
-
 // customers
 router.get('/customers', CustomerController.index)
 router.post('/customers', CustomerController.store)
+router.get('/customers/:id', CustomerController.show)
+router.put('/customers/:id', CustomerController.update)
+router.delete('/customers/:id', CustomerController.destroy)
+
+// hotels
+router.get('/hotels', HotelController.index)
+router.post('/hotels', HotelController.store)
+router.get('/hotels/:id', HotelController.show)
+router.put('/hotels/:id', HotelController.update)
+router.delete('/hotels/:id', HotelController.destroy)
+
+// rooms
+router.get('/rooms', RoomController.index)
+router.post('/rooms', RoomController.store)
+router.get('/rooms/:id', RoomController.show)
+router.put('/rooms/:id', RoomController.update)
+router.delete('/rooms/:id', RoomController.destroy)
+
+// services
+router.get('/services', ServiceController.index)
+router.post('/services', ServiceController.store)
+router.get('/services/:id', ServiceController.show)
+router.put('/services/:id', ServiceController.update)
+router.delete('/services/:id', ServiceController.destroy)
+
+// hotels categories profit
+router.get('/hotels_categories', HotelCategoryProfitController.index)
+router.post('/hotels_categories', HotelCategoryProfitController.store)
+router.get('/hotels_categories/:id', HotelCategoryProfitController.show)
+router.put('/hotels_categories/:id', HotelCategoryProfitController.update)
+router.delete('/hotels_categories/:id', HotelCategoryProfitController.destroy)
 
 // exchanges
 router.get('/exchanges', ExchangeController.index)

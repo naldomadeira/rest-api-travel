@@ -3,6 +3,8 @@ import Hotel from '../models/Hotel'
 
 class RoomController {
   async index(req, res) {
+    // #swagger.tags = ['Room']
+
     try {
       const rooms = await Room.findAll({
         attributes: ['id', 'name', 'type', 'active'],
@@ -14,11 +16,13 @@ class RoomController {
       })
       return res.status(200).json(rooms)
     } catch (err) {
-      return res.status(500).send({ message: `Erro retrieve all item` })
+      return res.status(500).send({ message: `Erro retrieve all items` })
     }
   }
 
   async store(req, res) {
+    // #swagger.tags = ['Room']
+
     const { hotel_id } = req.body
     try {
       if (hotel_id) {
@@ -40,6 +44,8 @@ class RoomController {
   }
 
   async show(req, res) {
+    // #swagger.tags = ['Room']
+
     try {
       const roomExists = await Room.findByPk(req.params.id, {
         include: [
@@ -61,6 +67,8 @@ class RoomController {
   }
 
   async update(req, res) {
+    // #swagger.tags = ['Room']
+
     const id = req.params.id
 
     try {
@@ -81,6 +89,8 @@ class RoomController {
   }
 
   async destroy(req, res) {
+    // #swagger.tags = ['Room']
+
     const id = req.params.id
 
     try {

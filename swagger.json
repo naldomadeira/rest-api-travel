@@ -1,0 +1,1408 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Rest Api Travel",
+    "description": "Rest Api Travel"
+  },
+  "host": "http://localhost:3333/",
+  "basePath": "api/docs",
+  "tags": [
+    {
+      "name": "Coin",
+      "description": "CRUD operations about coins"
+    },
+    {
+      "name": "CategoryAgent",
+      "description": "CRUD operations about categories of agents"
+    },
+    {
+      "name": "Customer",
+      "description": "CRUD operations about categories of agents"
+    },
+    {
+      "name": "Agent",
+      "description": "CRUD operations about categories of agents"
+    },
+    {
+      "name": "Hotel",
+      "description": "CRUD operations about categories of agents"
+    },
+    {
+      "name": "Room",
+      "description": "CRUD operations about categories of agents"
+    },
+    {
+      "name": "Service",
+      "description": "CRUD operations about categories of agents"
+    },
+    {
+      "name": "HotelCategoryAgent",
+      "description": "CRUD operations about categories of agents"
+    },
+    {
+      "name": "Offer",
+      "description": "CRUD operations about categories of agents"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/coins": {
+      "get": {
+        "tags": [
+          "Coin"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Coin"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/coins/update": {
+      "put": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/coins/{id}": {
+      "get": {
+        "tags": [
+          "Coin"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Coin"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Coin"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/categories_agents": {
+      "get": {
+        "tags": [
+          "CategoryAgent"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CategoryAgent"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/categories_agents/{id}": {
+      "get": {
+        "tags": [
+          "CategoryAgent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CategoryAgent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CategoryAgent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/agents": {
+      "get": {
+        "tags": [
+          "Agent"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Agent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "category_agent_id": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/agents/{id}": {
+      "get": {
+        "tags": [
+          "Agent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Agent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Agent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/customers": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "coin_id": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/customers/{id}": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/hotels": {
+      "get": {
+        "tags": [
+          "Hotel"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Hotel"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/hotels/{id}": {
+      "get": {
+        "tags": [
+          "Hotel"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Hotel"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Hotel"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rooms": {
+      "get": {
+        "tags": [
+          "Room"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Room"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "hotel_id": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rooms/{id}": {
+      "get": {
+        "tags": [
+          "Room"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Room"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Room"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services": {
+      "get": {
+        "tags": [
+          "Service"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Service"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "hotel_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "room_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "coin_id": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/{id}": {
+      "get": {
+        "tags": [
+          "Service"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Service"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "hotel_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "room_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "coin_id": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Service"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/hotels_categories": {
+      "get": {
+        "tags": [
+          "HotelCategoryAgent"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "HotelCategoryAgent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "hotel_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "category_agent_id": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/hotels_categories/{id}": {
+      "get": {
+        "tags": [
+          "HotelCategoryAgent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "HotelCategoryAgent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "hotel_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "category_agent_id": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "HotelCategoryAgent"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/exchanges": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "coin_from": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "coin_to": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/offers": {
+      "get": {
+        "tags": [
+          "Offer"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Offer"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customer_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "agent_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "service_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "checkin": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "checkout": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Coin": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Libra"
+        },
+        "symbol": {
+          "type": "string",
+          "example": "£"
+        },
+        "profit": {
+          "type": "number",
+          "example": 0.8
+        },
+        "value": {
+          "type": "number",
+          "example": 1.9
+        }
+      },
+      "required": [
+        "name",
+        "symbol",
+        "profit"
+      ]
+    },
+    "CategoryAgent": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Agências"
+        },
+        "profit": {
+          "type": "number",
+          "example": 0.6
+        },
+        "active": {
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "required": [
+        "name",
+        "profit",
+        "active"
+      ]
+    },
+    "Customer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Clistenio"
+        },
+        "surname": {
+          "type": "string",
+          "example": "Madeira"
+        },
+        "phone": {
+          "type": "string",
+          "example": "85 985426655"
+        },
+        "country": {
+          "type": "string",
+          "example": "Brazil"
+        },
+        "address": {
+          "type": "string",
+          "example": "Rua Desembargador Moreira, 1865 - Fortaleza - Ceará"
+        },
+        "coin_id": {
+          "type": "number",
+          "example": 1
+        },
+        "dependencie": {
+          "$ref": "#/definitions/Coin"
+        }
+      },
+      "required": [
+        "name",
+        "surname",
+        "phone",
+        "country",
+        "coin_id"
+      ]
+    },
+    "Agent": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Agência Fortaleza"
+        },
+        "address": {
+          "type": "string",
+          "example": "Rua Desembargador Moreira, 1865 - Fortaleza - Ceará"
+        },
+        "category_agent_id": {
+          "type": "number",
+          "example": 1
+        },
+        "dependencie": {
+          "$ref": "#/definitions/CategoryAgent"
+        }
+      },
+      "required": [
+        "name",
+        "category_agent_id"
+      ]
+    },
+    "Hotel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Hotel Vila Mango"
+        },
+        "country": {
+          "type": "string",
+          "example": "Brazil"
+        },
+        "details": {
+          "type": "string",
+          "example": "Hotel com 30 anos de história"
+        },
+        "address": {
+          "type": "string",
+          "example": "Av.Beira mar, 2356, Ceará"
+        }
+      },
+      "required": [
+        "name",
+        "country"
+      ]
+    },
+    "Room": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Quarto vista jardins"
+        },
+        "type": {
+          "type": "string",
+          "example": "DBL"
+        },
+        "hotel_id": {
+          "type": "number",
+          "example": 1
+        },
+        "dependencie": {
+          "$ref": "#/definitions/Hotel"
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "hotel_id"
+      ]
+    },
+    "Service": {
+      "type": "object",
+      "properties": {
+        "price": {
+          "type": "number",
+          "example": 500
+        },
+        "hotel_id": {
+          "type": "number",
+          "example": 1
+        },
+        "room_id": {
+          "type": "number",
+          "example": 1
+        },
+        "coin_id": {
+          "type": "number",
+          "example": 1
+        },
+        "dependencie1": {
+          "$ref": "#/definitions/Hotel"
+        },
+        "dependencie2": {
+          "$ref": "#/definitions/Room"
+        },
+        "dependencie3": {
+          "$ref": "#/definitions/Coin"
+        }
+      },
+      "required": [
+        "price",
+        "hotel_id",
+        "room_id",
+        "coin_id"
+      ]
+    },
+    "HotelCategoryAgent": {
+      "type": "object",
+      "properties": {
+        "profit": {
+          "type": "number",
+          "example": 0.3
+        },
+        "hotel_id": {
+          "type": "number",
+          "example": 1
+        },
+        "category_agent_id": {
+          "type": "number",
+          "example": 1
+        },
+        "dependencie1": {
+          "$ref": "#/definitions/Hotel"
+        },
+        "dependencie2": {
+          "$ref": "#/definitions/CategoryAgent"
+        }
+      },
+      "required": [
+        "profit",
+        "hotel_id",
+        "category_agent_id"
+      ]
+    },
+    "Offer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Oferta Reveilon"
+        },
+        "checkin": {
+          "type": "string",
+          "example": "2022-10-23"
+        },
+        "checkout": {
+          "type": "string",
+          "example": "2022-10-25"
+        },
+        "customer_id": {
+          "type": "number",
+          "example": 2
+        },
+        "agent_id": {
+          "type": "number",
+          "example": 1
+        },
+        "service_id": {
+          "type": "number",
+          "example": 1
+        },
+        "dependencie1": {
+          "$ref": "#/definitions/Customer"
+        },
+        "dependencie2": {
+          "$ref": "#/definitions/Agent"
+        },
+        "dependencie3": {
+          "$ref": "#/definitions/Service"
+        }
+      },
+      "required": [
+        "name",
+        "checkin",
+        "checkout",
+        "customer_id",
+        "agent_id",
+        "service_id"
+      ]
+    }
+  },
+  "servers": [
+    "http://localhost:3333/api/docs"
+  ]
+}

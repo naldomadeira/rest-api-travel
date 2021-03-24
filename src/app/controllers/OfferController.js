@@ -12,6 +12,8 @@ import { parseISO, isBefore, isEqual, differenceInDays } from 'date-fns'
 
 class OfferController {
   async index(req, res) {
+    // #swagger.tags = ['Offer']
+
     const offers = await Offer.findAll({
       attributes: [
         'id',
@@ -45,6 +47,8 @@ class OfferController {
   }
 
   async store(req, res) {
+    // #swagger.tags = ['Offer']
+
     const { customer_id, agent_id, service_id, checkin, checkout } = req.body
 
     const parsedDateCheckin = parseISO(checkin)

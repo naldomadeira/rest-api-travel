@@ -3,6 +3,8 @@ import Agent from '../models/Agent'
 
 class AgentController {
   async index(req, res) {
+    // #swagger.tags = ['Agent']
+
     try {
       const agents = await Agent.findAll({
         attributes: ['id', 'name', 'active', 'address'],
@@ -14,11 +16,13 @@ class AgentController {
       })
       return res.status(200).json(agents)
     } catch (err) {
-      return res.status(500).send({ message: `Erro retrieve all item` })
+      return res.status(500).send({ message: `Erro retrieve all items` })
     }
   }
 
   async store(req, res) {
+    // #swagger.tags = ['Agent']
+
     const { category_agent_id } = req.body
     try {
       if (category_agent_id) {
@@ -40,6 +44,8 @@ class AgentController {
   }
 
   async show(req, res) {
+    // #swagger.tags = ['Agent']
+
     try {
       const agentExists = await Agent.findByPk(req.params.id, {
         include: [
@@ -61,6 +67,7 @@ class AgentController {
   }
 
   async update(req, res) {
+    // #swagger.tags = ['Agent']
     const id = req.params.id
 
     try {
@@ -76,13 +83,12 @@ class AgentController {
         .status(200)
         .send(`item with id=${id} was updated successfully!`)
     } catch (err) {
-      return res
-        .status(500)
-        .send({ message: 'Error update item agent information' })
+      return res.status(500).send({ message: 'Error update item information' })
     }
   }
 
   async destroy(req, res) {
+    // #swagger.tags = ['Agent']
     const id = req.params.id
 
     try {

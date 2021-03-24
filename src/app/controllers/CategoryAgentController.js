@@ -3,6 +3,7 @@ import Agent from '../models/Agent'
 
 class CategoryAgentController {
   async index(req, res) {
+    // #swagger.tags = ['CategoryAgent']
     try {
       const categories = await CategoryAgent.findAll({
         include: [
@@ -15,11 +16,13 @@ class CategoryAgentController {
       })
       return res.status(200).json(categories)
     } catch (err) {
-      return res.status(500).send({ message: `Erro retrieve all item` })
+      return res.status(500).send({ message: `Erro retrieve all items` })
     }
   }
 
   async store(req, res) {
+    // #swagger.tags = ['CategoryAgent']
+
     try {
       const category = await CategoryAgent.create(req.body)
       return res.status(201).json(category)
@@ -29,6 +32,8 @@ class CategoryAgentController {
   }
 
   async show(req, res) {
+    // #swagger.tags = ['CategoryAgent']
+
     try {
       const categoryAgentExist = await CategoryAgent.findByPk(req.params.id, {
         include: [
@@ -50,6 +55,8 @@ class CategoryAgentController {
   }
 
   async update(req, res) {
+    // #swagger.tags = ['CategoryAgent']
+
     const id = req.params.id
 
     try {
@@ -72,6 +79,8 @@ class CategoryAgentController {
   }
 
   async destroy(req, res) {
+    // #swagger.tags = ['CategoryAgent']
+
     const id = req.params.id
 
     try {
