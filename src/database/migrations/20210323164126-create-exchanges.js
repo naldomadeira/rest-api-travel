@@ -24,9 +24,22 @@ module.exports = {
         allowNull: false,
       },
 
-      profit: {
+      customer_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'customers', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull: false,
+      },
+
+      amount_from: {
         type: Sequelize.DECIMAL,
-        defaultValue: 0,
+        allowNull: false,
+      },
+
+      amount_total: {
+        type: Sequelize.DECIMAL,
+        allowNull: false,
       },
 
       created_at: {

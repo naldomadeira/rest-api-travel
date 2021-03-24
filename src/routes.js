@@ -9,7 +9,7 @@ import CustomerController from './app/controllers/CustomerController'
 import HotelCategoryProfitController from './app/controllers/HotelCategoryProfitController'
 import ExchangeController from './app/controllers/ExchangeController'
 import OfferController from './app/controllers/OfferController'
-
+import ExchangeProfitControlller from './app/controllers/ExchangeProfitControlller'
 const router = new Router()
 
 /**
@@ -17,13 +17,17 @@ const router = new Router()
  */
 
 // coins
-// #swagger.tags = ['Coin']
 router.get('/coins', CoinController.index)
-router.put('/coins/update', CoinController.updateAllCurrency)
 router.post('/coins', CoinController.store)
 router.get('/coins/:id', CoinController.show)
 router.put('/coins/:id', CoinController.update)
 router.delete('/coins/:id', CoinController.destroy)
+
+// exchange profit
+router.post('/exchange_profit', ExchangeProfitControlller.store)
+router.get('/exchange_profit/:id', ExchangeProfitControlller.show)
+router.put('/exchange_profit/:id', ExchangeProfitControlller.update)
+router.delete('/exchange_profit/:id', ExchangeProfitControlller.destroy)
 
 // categories agents
 router.get('/categories_agents', CategoryAgentController.index)
@@ -76,7 +80,7 @@ router.delete('/hotels_categories/:id', HotelCategoryProfitController.destroy)
 
 // exchanges
 router.get('/exchanges', ExchangeController.index)
-router.post('/exchanges', ExchangeController.store)
+router.post('/exchanges', ExchangeController.destroy)
 
 // offers
 router.get('/offers', OfferController.index)

@@ -29,6 +29,10 @@ class Customer extends Model {
       foreignKey: 'customer_id',
       as: 'offers',
     })
+    this.hasMany(models.Exchange, {
+      foreignKey: 'customer_id',
+      as: 'exchange',
+    })
   }
 }
 

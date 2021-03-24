@@ -11,9 +11,11 @@ import Customer from '../app/models/Customer'
 import HotelCategoryProfit from '../app/models/HotelCategoryProfit'
 import Exchange from '../app/models/Exchange'
 import Offer from '../app/models/Offer'
+import ExchangeProfit from '../app/models/ExchangeProfit'
 
 const models = [
   Hotel,
+  ExchangeProfit,
   Room,
   Coin,
   Service,

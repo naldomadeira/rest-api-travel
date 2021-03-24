@@ -1,57 +1,61 @@
 import Coin from '../models/Coin'
 import Exchange from '../models/Exchange'
+import Customer from '../models/Customer'
 
 class ExchangeController {
   async index(req, res) {
-    const exchanges = await Exchange.findAll({
-      attributes: ['id', 'profit'],
-      include: [
-        {
-          model: Coin,
-          as: 'coin_from',
-          attributes: ['id', 'name'],
-        },
-        {
-          model: Coin,
-          as: 'coin_to',
-          attributes: ['id', 'name'],
-        },
-      ],
-    })
+    // #swagger.tags = ['Exchange']
 
-    return res.json(exchanges)
+    try {
+      const exchanges = await Exchange.findAll({
+        attributes: ['id', 'profit'],
+        include: [
+          {
+            model: Coin,
+            as: 'coin_from',
+            attributes: ['id', 'name'],
+          },
+          {
+            model: Coin,
+            as: 'coin_to',
+            attributes: ['id', 'name'],
+          },
+          {
+            model: Customer,
+            as: 'customer_id',
+            attributes: ['id', 'name'],
+          },
+        ],
+      })
+      return res.status(200).json(exchanges)
+    } catch (err) {
+      return res.status(500).send({ message: `Erro retrieve all items` })
+    }
   }
 
-  async store(req, res) {
-    const { coin_from, coin_to } = req.body
+  async destroy(req, res) {
+    // #swagger.tags = ['Exchange']
 
-    if (coin_from === coin_to) {
-      res.status(400).json({ error: 'currencies cannot be the same' })
+    const id = req.params.id
+
+    try {
+      const exchangeExists = await Customer.findByPk(req.params.id)
+      if (!exchangeExists) {
+        return res.status(400).json({ error: "Exchange don't exist'" })
+      }
+
+      await Customer.destroy({
+        where: { id: id },
+      })
+
+      return res.status(204).send({
+        message: `item with id=${id} was deleted successfully!`,
+      })
+    } catch (err) {
+      return res.status(500).send({
+        message: `Could not delete item with id=${id}`,
+      })
     }
-
-    const coinFromExists = await Coin.findOne({
-      where: {
-        id: coin_from,
-      },
-    })
-
-    if (!coinFromExists) {
-      res.status(400).json({ error: "Coin from don't exist'" })
-    }
-
-    const coinToExists = await Coin.findOne({
-      where: {
-        id: coin_to,
-      },
-    })
-
-    if (!coinToExists) {
-      res.status(400).json({ error: "Coin to don't exist'" })
-    }
-
-    const exchange = await Exchange.create(req.body)
-
-    return res.json(exchange)
   }
 }
 
