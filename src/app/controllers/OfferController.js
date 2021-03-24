@@ -7,13 +7,14 @@ import Coin from '../models/Coin'
 import CategoryAgent from '../models/CategoryAgent'
 import Hotel from '../models/Hotel'
 import Room from '../models/Room'
+import api from '../../api/CurrencyApi'
 
 import { parseISO, isBefore, isEqual, differenceInDays } from 'date-fns'
 
 class OfferController {
   async index(req, res) {
     // #swagger.tags = ['Offer']
-
+    console.log(await api.updateAllCoins())
     const offers = await Offer.findAll({
       attributes: [
         'id',
