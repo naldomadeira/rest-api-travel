@@ -1,9 +1,8 @@
-## REST API TRAVEL
+## REST API Travel with Node.js, Express.js, Sequelize, Sucrase, Swagger, Docker and PostgresSQL
 
 [![IMAGE_REPOSITORY](https://repository-images.githubusercontent.com/351292809/5c155200-8d85-11eb-9294-630eada53a01)
 
 
-## REST API Travel with Node.js, Express.js, Sequelize, Sucrase, Swagger, Docker and PostgresSQL
 
 > `API RESTful` - Tourism agency specialized in bringing tourists from around the world to visit Brazil's beaches, savannahs and forests
 
