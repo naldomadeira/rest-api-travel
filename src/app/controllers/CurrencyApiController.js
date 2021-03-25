@@ -1,8 +1,8 @@
 import axios from 'axios'
 import convert from 'xml-to-json-promise'
-import Coin from './app/models/Coin'
+import Coin from '../models/Coin'
 
-class CurrencyApi {
+class CurrencyApiController {
   async updateAllCoins(req, res) {
     try {
       const uri =
@@ -17,22 +17,22 @@ class CurrencyApi {
       const coins = await Coin.findAll()
 
       // iterate all coins and updating in database
-      coins.map((coin) => {
-        const filterCurrency = currencies.find((item) => {
-          return item.$.currency === coin.symbol
+      await Promise.all(
+        coins.map(async (coin) => {
+          const filterCurrency = await currencies.find((item) => {
+            return item.$.currency === coin.symbol
+          })
+          if (filterCurrency) {
+            coin.value = filterCurrency['$'].rate
+            await coin.save()
+          }
         })
-        if (filterCurrency) {
-          coin.value = filterCurrency['$'].rate
-          coin.save()
-        }
-      })
+      )
       return res.status(200).json(coins)
     } catch (err) {
-      return res.status(500).send({
-        message: err,
-      })
+      res.status(400).json({ error: "error update currencies'" })
     }
   }
 }
 
-export default new CurrencyApi()
+export default new CurrencyApiController()

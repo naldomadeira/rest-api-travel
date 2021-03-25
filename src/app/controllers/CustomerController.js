@@ -7,7 +7,7 @@ class CustomerController {
 
     try {
       const customers = await Customer.findAll({
-        attributes: ['name', 'surname', 'address', 'phone', 'country'],
+        attributes: ['id', 'name', 'surname', 'address', 'phone', 'country'],
         include: {
           model: Coin,
           as: 'coin',

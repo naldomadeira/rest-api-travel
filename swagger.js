@@ -53,7 +53,7 @@ const doc = {
   definitions: {
     Coin: {
       $name: 'Libra',
-      $symbol: '£',
+      $symbol: 'GBP',
       $profit: 0.8,
       value: 1.9,
     },

@@ -1,6 +1,6 @@
 import ExchangeProfit from '../models/ExchangeProfit'
 
-class ExchangeProfitControlller {
+class ExchangeProfitController {
   async store(req, res) {
     // #swagger.tags = ['ExchangeProfit']
 
@@ -77,4 +77,4 @@ class ExchangeProfitControlller {
   }
 }
 
-export default new ExchangeProfitControlller()
+export default new ExchangeProfitController()

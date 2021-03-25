@@ -9,7 +9,9 @@ import CustomerController from './app/controllers/CustomerController'
 import HotelCategoryProfitController from './app/controllers/HotelCategoryProfitController'
 import ExchangeController from './app/controllers/ExchangeController'
 import OfferController from './app/controllers/OfferController'
-import ExchangeProfitControlller from './app/controllers/ExchangeProfitControlller'
+import ExchangeProfitController from './app/controllers/ExchangeProfitController'
+import CurrencyApiController from './app/controllers/CurrencyApiController'
+
 const router = new Router()
 
 /**
@@ -22,12 +24,16 @@ router.post('/coins', CoinController.store)
 router.get('/coins/:id', CoinController.show)
 router.put('/coins/:id', CoinController.update)
 router.delete('/coins/:id', CoinController.destroy)
+router.put(
+  '/coins/update_values_internet',
+  CurrencyApiController.updateAllCoins
+)
 
 // exchange profit
-router.post('/exchange_profit', ExchangeProfitControlller.store)
-router.get('/exchange_profit/:id', ExchangeProfitControlller.show)
-router.put('/exchange_profit/:id', ExchangeProfitControlller.update)
-router.delete('/exchange_profit/:id', ExchangeProfitControlller.destroy)
+router.post('/exchange_profit', ExchangeProfitController.store)
+router.get('/exchange_profit/:id', ExchangeProfitController.show)
+router.put('/exchange_profit/:id', ExchangeProfitController.update)
+router.delete('/exchange_profit/:id', ExchangeProfitController.destroy)
 
 // categories agents
 router.get('/categories_agents', CategoryAgentController.index)
@@ -85,5 +91,6 @@ router.post('/exchanges', ExchangeController.destroy)
 // offers
 router.get('/offers', OfferController.index)
 router.post('/offers', OfferController.store)
+router.put('/offers/:id', OfferController.update)
 
 export default router
