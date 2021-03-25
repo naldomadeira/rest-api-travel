@@ -29,7 +29,7 @@
 ```sh
 $ https://github.com/naldomadeira/rest-api-travel.git
 $ cd rest-api-travel
-$ npm install
+$ yarn install
 ```
 
 Project setup it is necessary to rename `.env.example` for `.env` and make the necessary adjustments to connect your database
@@ -40,7 +40,7 @@ Project setup it is necessary to rename `.env.example` for `.env` and make the n
 $ docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 ```
 
-3. Execute migrations
+3. After configuring and creating the database,execute migrations
 
 ```sh
 $ yarn sequelize db:migrate
@@ -49,7 +49,7 @@ $ yarn sequelize db:migrate
 4.Use the command below to start the project:
 
 ```bash
-$ npm start
+$ yarn dev
 ```
 
 5.Run the project and access the documentation at:
@@ -58,8 +58,6 @@ $ npm start
 ## Database Model
 
 ![database-api-travel](https://user-images.githubusercontent.com/1483851/112417763-000be880-8d07-11eb-85fd-d48efecb5923.PNG)
-
-## Documentarion
 
 ## Tests
 
