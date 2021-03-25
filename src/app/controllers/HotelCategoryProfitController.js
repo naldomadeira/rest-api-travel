@@ -30,6 +30,11 @@ class HotelCategoryProfitController {
 
   async store(req, res) {
     // #swagger.tags = ['HotelCategoryAgent']
+    /*#swagger.parameters['obj'] = {
+                in: 'body',
+                description: "Adding a new HoteCategoryAgent.",
+                schema: { $ref: "#/definitions/CategoryCategoryAgent" }
+    } */
 
     const { hotel_id, category_agent_id } = req.body
 

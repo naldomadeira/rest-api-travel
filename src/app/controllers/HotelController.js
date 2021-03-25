@@ -23,6 +23,11 @@ class HotelController {
 
   async store(req, res) {
     // #swagger.tags = ['Hotel']
+    /*    #swagger.parameters['obj'] = {
+                in: 'body',
+                description: "Adding new Hotel.",
+                schema: { $ref: "#/definitions/Hotel" }
+        } */
 
     try {
       const hotel = await Hotel.create(req.body)

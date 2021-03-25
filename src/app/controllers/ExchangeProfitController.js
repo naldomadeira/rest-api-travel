@@ -3,6 +3,11 @@ import ExchangeProfit from '../models/ExchangeProfit'
 class ExchangeProfitController {
   async store(req, res) {
     // #swagger.tags = ['ExchangeProfit']
+    /*    #swagger.parameters['obj'] = {
+                in: 'body',
+                description: "Adding new Exchance Profit.",
+                schema: { $ref: "#/definitions/ExchangeProfit" }
+        } */
 
     try {
       const exchangeProfit = await ExchangeProfit.create(req.body)

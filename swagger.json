@@ -3,10 +3,10 @@
   "info": {
     "version": "1.0.0",
     "title": "Rest Api Travel",
-    "description": "Rest Api Travel"
+    "description": "Node `API RESTful` - tourism agency specialized in bringing tourists from around the world to visit Brazil's beaches, savannahs and forests"
   },
-  "host": "http://localhost:3333/",
-  "basePath": "api/docs",
+  "host": "localhost:3333/",
+  "basePath": "api/",
   "tags": [
     {
       "name": "Coin",
@@ -76,7 +76,16 @@
           "Coin"
         ],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Adding new Coin. important: euro reference currency",
+            "schema": {
+              "$ref": "#/definitions/Coin"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -164,6 +173,7 @@
     "/coins/update_values_internet": {
       "put": {
         "tags": [],
+        "summary": "retrieves and updates the coins values of current day",
         "description": "",
         "parameters": [],
         "responses": {
@@ -182,7 +192,16 @@
           "ExchangeProfit"
         ],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Adding new Exchance Profit.",
+            "schema": {
+              "$ref": "#/definitions/ExchangeProfit"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -285,7 +304,16 @@
           "CategoryAgent"
         ],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Adding new CategoryAgent.",
+            "schema": {
+              "$ref": "#/definitions/CategoryAgent"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -392,14 +420,9 @@
           {
             "name": "obj",
             "in": "body",
+            "description": "Adding new Agent.",
             "schema": {
-              "type": "object",
-              "properties": {
-                "category_agent_id": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Agent"
             }
           }
         ],
@@ -515,14 +538,9 @@
           {
             "name": "obj",
             "in": "body",
+            "description": "Adding new Customer.",
             "schema": {
-              "type": "object",
-              "properties": {
-                "coin_id": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Customer"
             }
           }
         ],
@@ -634,7 +652,16 @@
           "Hotel"
         ],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Adding new Hotel.",
+            "schema": {
+              "$ref": "#/definitions/Hotel"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -741,14 +768,9 @@
           {
             "name": "obj",
             "in": "body",
+            "description": "Adding new Room - important: type: SGL, DBL, TLP, QDPL .",
             "schema": {
-              "type": "object",
-              "properties": {
-                "hotel_id": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Room"
             }
           }
         ],
@@ -864,22 +886,9 @@
           {
             "name": "obj",
             "in": "body",
+            "description": "Adding new Service.",
             "schema": {
-              "type": "object",
-              "properties": {
-                "hotel_id": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "room_id": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "coin_id": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Service"
             }
           }
         ],
@@ -1016,18 +1025,9 @@
           {
             "name": "obj",
             "in": "body",
+            "description": "Adding a new HoteCategoryAgent.",
             "schema": {
-              "type": "object",
-              "properties": {
-                "hotel_id": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "category_agent_id": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/CategoryCategoryAgent"
             }
           }
         ],
@@ -1188,30 +1188,9 @@
           {
             "name": "obj",
             "in": "body",
+            "description": "Adding new offer - important: all registered profit margins .",
             "schema": {
-              "type": "object",
-              "properties": {
-                "customer_id": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "agent_id": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "service_id": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "checkin": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "checkout": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Offer"
             }
           }
         ],
@@ -1309,16 +1288,33 @@
         "active"
       ]
     },
+    "ExchangeProfit": {
+      "type": "object",
+      "properties": {
+        "profit": {
+          "type": "number",
+          "example": 0.2
+        },
+        "active": {
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "required": [
+        "profit",
+        "active"
+      ]
+    },
     "Customer": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
-          "example": "Clistenio"
+          "example": "José"
         },
         "surname": {
           "type": "string",
-          "example": "Madeira"
+          "example": "Bonifácio"
         },
         "phone": {
           "type": "string",
@@ -1530,6 +1526,44 @@
         "customer_id",
         "agent_id",
         "service_id"
+      ]
+    },
+    "Exchange": {
+      "type": "object",
+      "properties": {
+        "coin_from": {
+          "type": "number",
+          "example": 1
+        },
+        "coin_to": {
+          "type": "number",
+          "example": 2
+        },
+        "amount_from": {
+          "type": "number",
+          "example": 100
+        },
+        "amount_total": {
+          "type": "number",
+          "example": 200
+        },
+        "customer_id": {
+          "type": "number",
+          "example": 1
+        },
+        "dependencie1": {
+          "$ref": "#/definitions/Coin"
+        },
+        "dependencie2": {
+          "$ref": "#/definitions/Customer"
+        }
+      },
+      "required": [
+        "coin_from",
+        "coin_to",
+        "amount_from",
+        "amount_total",
+        "customer_id"
       ]
     }
   },

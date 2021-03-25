@@ -49,6 +49,11 @@ class OfferController {
 
   async store(req, res, next) {
     // #swagger.tags = ['Offer']
+    /* #swagger.parameters['obj'] = {
+                in: 'body',
+                description: "Adding new offer - important: all registered profit margins .",
+                schema: { $ref: "#/definitions/Offer" }
+    } */
 
     const { customer_id, agent_id, service_id, checkin, checkout } = req.body
 
@@ -259,6 +264,7 @@ class OfferController {
    */
   async update(req, res) {
     // #swagger.tags = ['Offer']
+
     const id = req.params.id
     const { paid } = req.body
     try {

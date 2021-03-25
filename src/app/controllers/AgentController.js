@@ -22,6 +22,11 @@ class AgentController {
 
   async store(req, res) {
     // #swagger.tags = ['Agent']
+    /*   #swagger.parameters['obj'] = {
+              in: 'body',
+              description: "Adding new Agent.",
+              schema: { $ref: "#/definitions/Agent" }
+    } */
 
     const { category_agent_id } = req.body
     try {

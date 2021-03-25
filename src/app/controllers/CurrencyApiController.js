@@ -4,6 +4,8 @@ import Coin from '../models/Coin'
 
 class CurrencyApiController {
   async updateAllCoins(req, res) {
+    // #swagger.summary = 'retrieves and updates the coins values of current day'
+
     try {
       const uri =
         'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml'

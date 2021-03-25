@@ -13,6 +13,11 @@ class CoinController {
 
   async store(req, res) {
     // #swagger.tags = ['Coin']
+    /*    #swagger.parameters['obj'] = {
+                in: 'body',
+                description: "Adding new Coin. important: euro reference currency",
+                schema: { $ref: "#/definitions/Coin" }
+    } */
     try {
       const coin = await Coin.create(req.body)
       return res.status(201).json(coin)

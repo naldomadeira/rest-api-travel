@@ -22,6 +22,11 @@ class CategoryAgentController {
 
   async store(req, res) {
     // #swagger.tags = ['CategoryAgent']
+    /*    #swagger.parameters['obj'] = {
+                in: 'body',
+                description: "Adding new CategoryAgent.",
+                schema: { $ref: "#/definitions/CategoryAgent" }
+        } */
 
     try {
       const category = await CategoryAgent.create(req.body)

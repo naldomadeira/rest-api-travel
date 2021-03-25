@@ -22,7 +22,11 @@ class CustomerController {
 
   async store(req, res) {
     // #swagger.tags = ['Customer']
-
+    /*    #swagger.parameters['obj'] = {
+                in: 'body',
+                description: "Adding new Customer.",
+                schema: { $ref: "#/definitions/Customer" }
+        } */
     const { coin_id } = req.body
     try {
       if (coin_id) {

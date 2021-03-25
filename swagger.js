@@ -4,11 +4,12 @@ const doc = {
   info: {
     version: '1.0.0',
     title: 'Rest Api Travel',
-    description: 'Rest Api Travel',
+    description:
+      "Node `API RESTful` - tourism agency specialized in bringing tourists from around the world to visit Brazil's beaches, savannahs and forests",
   },
-  host: 'http://localhost:3333/',
+  host: 'localhost:3333/',
   servers: ['http://localhost:3333/api/docs'],
-  basePath: 'api/docs',
+  basePath: 'api/',
   schemes: ['http'],
   consumes: ['application/json'],
   produces: ['application/json'],
@@ -62,9 +63,13 @@ const doc = {
       $profit: 0.6,
       $active: true,
     },
+    ExchangeProfit: {
+      $profit: 0.2,
+      $active: true,
+    },
     Customer: {
-      $name: 'Clistenio',
-      $surname: 'Madeira',
+      $name: 'José',
+      $surname: 'Bonifácio',
       $phone: '85 985426655',
       $country: 'Brazil',
       address: 'Rua Desembargador Moreira, 1865 - Fortaleza - Ceará',
@@ -136,6 +141,19 @@ const doc = {
       },
       dependencie3: {
         $ref: '#/definitions/Service',
+      },
+    },
+    Exchange: {
+      $coin_from: 1,
+      $coin_to: 2,
+      $amount_from: 100,
+      $amount_total: 200,
+      $customer_id: 1,
+      dependencie1: {
+        $ref: '#/definitions/Coin',
+      },
+      dependencie2: {
+        $ref: '#/definitions/Customer',
       },
     },
   },

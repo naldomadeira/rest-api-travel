@@ -36,6 +36,11 @@ class ServiceController {
 
   async store(req, res) {
     // #swagger.tags = ['Service']
+    /* #swagger.parameters['obj'] = {
+                in: 'body',
+                description: "Adding new Service.",
+                schema: { $ref: "#/definitions/Service" }
+    } */
 
     const { hotel_id, room_id, coin_id } = req.body
     try {

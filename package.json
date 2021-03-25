@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/server",
     "lint": "yarn eslint --fix src --ext .js",
-    "swagger-autogen": "node swagger"
+    "swagger": "node swagger"
   },
   "dependencies": {
     "axios": "^0.21.1",
