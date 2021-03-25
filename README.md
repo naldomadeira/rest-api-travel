@@ -2,15 +2,20 @@
 
 ## REST API Travel with Node.js, Express.js, Sequelize, Sucrase, Swagger, Docker and PostgresSQL
 
+> `API RESTful` - Tourism agency specialized in bringing tourists from around the world to visit Brazil's beaches, savannahs and forests
+
 ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
 ![NODE](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)![EXPRESS](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)![GITHUB](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![YARN](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white)
+![POSTGRES](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![VSCODE](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 
 ## Components
 
 - NodeJs
 - Insomnia
 - Container Docker Postgres
-- Posbird
+- Postbird
 - Swagger
 
 ## Dependecies
@@ -21,6 +26,8 @@
 - Sucrase
 - Eslint
 - Prettier
+- dotEnv
+- Cors
 
 ## Usage
 
