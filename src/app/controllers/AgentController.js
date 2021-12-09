@@ -1,120 +1,80 @@
-import CategoryAgent from '../models/CategoryAgent'
-import Agent from '../models/Agent'
+import AgentBusiness from '../business/AgentBusiness';
 
 class AgentController {
-  async index(req, res) {
-    // #swagger.tags = ['Agent']
+    async index(req, res) {
+        // #swagger.tags = ['Agent']
 
-    try {
-      const agents = await Agent.findAll({
-        attributes: ['id', 'name', 'active', 'address'],
-        include: {
-          model: CategoryAgent,
-          as: 'category',
-          attributes: ['id', 'name'],
-        },
-      })
-      return res.status(200).json(agents)
-    } catch (err) {
-      return res.status(500).send({ message: `Erro retrieve all items` })
+        try {
+            const agents = await AgentBusiness.index();
+
+            return res.status(200).json(agents);
+        } catch (err) {
+            return res
+                .status(500)
+                .send({ message: `Error retrieve all items` });
+        }
     }
-  }
 
-  async store(req, res) {
-    // #swagger.tags = ['Agent']
-    /*   #swagger.parameters['obj'] = {
+    async store(req, res) {
+        // #swagger.tags = ['Agent']
+        /*   #swagger.parameters['obj'] = {
               in: 'body',
               description: "Adding new Agent.",
               schema: { $ref: "#/definitions/Agent" }
     } */
 
-    const { category_agent_id } = req.body
-    try {
-      if (category_agent_id) {
-        const categoryExists = await CategoryAgent.findOne({
-          where: {
-            id: category_agent_id,
-          },
-        })
+        try {
+            const agent = await AgentBusiness.store(req.body);
 
-        if (!categoryExists) {
-          return res.status(400).json({ error: "Category don't exist'" })
+            return res.status(201).json(agent);
+        } catch (err) {
+            return res.status(500).send({ message: `Error inserting an item` });
         }
-      }
-      const agent = await Agent.create(req.body)
-      return res.status(201).json(agent)
-    } catch (err) {
-      return res.status(500).send({ message: `Erro store a item` })
     }
-  }
 
-  async show(req, res) {
-    // #swagger.tags = ['Agent']
+    async show(req, res) {
+        // #swagger.tags = ['Agent']
+        const { id } = req.params;
 
-    try {
-      const agentExists = await Agent.findByPk(req.params.id, {
-        include: [
-          {
-            model: CategoryAgent,
-            as: 'category',
-            attributes: ['id', 'name'],
-          },
-        ],
-      })
-      if (!agentExists) {
-        return res.status(400).json({ error: "Agent don't exist'" })
-      }
+        try {
+            const agent = await AgentBusiness.show(id);
 
-      return res.status(200).json(agentExists)
-    } catch (err) {
-      return res.status(500).send({ message: `Erro retrieving a item` })
+            return res.status(200).json(agent);
+        } catch (err) {
+            return res
+                .status(500)
+                .send({ message: `Error retrieving an item` });
+        }
     }
-  }
 
-  async update(req, res) {
-    // #swagger.tags = ['Agent']
-    const id = req.params.id
+    async update(req, res) {
+        // #swagger.tags = ['Agent']
+        const { id } = req.params;
+        const agentDocument = req.body;
 
-    try {
-      const agentExists = await Agent.findByPk(req.params.id)
-      if (!agentExists) {
-        return res.status(400).json({ error: "Agent don't exist'" })
-      }
+        try {
+            const agent = await AgentBusiness.update(id, agentDocument);
 
-      await Agent.update(req.body, {
-        where: { id: id },
-      })
-      return res
-        .status(200)
-        .send(`item with id=${id} was updated successfully!`)
-    } catch (err) {
-      return res.status(500).send({ message: 'Error update item information' })
+            return res.status(200).send(agent);
+        } catch (err) {
+            return res.status(500).send({ message: 'Error updating an item' });
+        }
     }
-  }
 
-  async destroy(req, res) {
-    // #swagger.tags = ['Agent']
-    const id = req.params.id
+    async destroy(req, res) {
+        // #swagger.tags = ['Agent']
+        const { id } = req.params.id;
 
-    try {
-      const agentExists = await Agent.findByPk(req.params.id)
-      if (!agentExists) {
-        return res.status(400).json({ error: "Agent don't exist'" })
-      }
+        try {
+            await AgentBusiness.destroy(id);
 
-      await Agent.destroy({
-        where: { id: id },
-      })
-
-      return res.status(204).json({
-        message: `item with id=${id} was deleted successfully!`,
-      })
-    } catch (err) {
-      return res.status(500).send({
-        message: `Could not delete item with id=${id}`,
-      })
+            return res.status(204).send();
+        } catch (err) {
+            return res.status(500).send({
+                message: `Couldn't delete item with id=${id}`,
+            });
+        }
     }
-  }
 }
 
-export default new AgentController()
+export default new AgentController();

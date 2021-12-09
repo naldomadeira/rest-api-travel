@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: travel_database
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    networks:
+      - travel-network
+    volumes:
+      - ${LOCAL_DATABASE_VOLUME}:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - travel-network
+    restart: unless-stopped
+
+networks:
+    travel-network:
+      driver: bridge
+
+

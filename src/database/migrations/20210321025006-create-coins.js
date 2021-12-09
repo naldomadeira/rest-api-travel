@@ -1,50 +1,50 @@
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('coins', {
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-      },
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.createTable('coins', {
+            id: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+            },
 
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
+            name: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
 
-      symbol: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
+            symbol: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
 
-      profit: {
-        type: Sequelize.DECIMAL,
-        defaultValue: 0,
-      },
+            profit: {
+                type: Sequelize.DECIMAL,
+                defaultValue: 0,
+            },
 
-      value: {
-        type: Sequelize.DECIMAL,
-        defaultValue: 0,
-      },
+            value: {
+                type: Sequelize.DECIMAL,
+                defaultValue: 0,
+            },
 
-      active: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true,
-      },
+            active: {
+                type: Sequelize.BOOLEAN,
+                defaultValue: true,
+            },
 
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
+            created_at: {
+                type: Sequelize.DATE,
+                allowNull: false,
+            },
 
-      updated_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-    })
-  },
-  down: (queryInterface) => {
-    return queryInterface.dropTable('coins')
-  },
-}
+            updated_at: {
+                type: Sequelize.DATE,
+                allowNull: false,
+            },
+        });
+    },
+    down: (queryInterface) => {
+        return queryInterface.dropTable('coins');
+    },
+};

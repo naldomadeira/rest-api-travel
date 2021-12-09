@@ -1,5 +1,7 @@
-import app from './application'
+import environment from './config/environment';
+import app from './application';
 
-app.listen(process.env.APP_PORT, () => {
-  console.log(`Server is running on :${process.env.APP_URL}`)
-})
+app.listen(environment.application.port, () => {
+    console.log(`Server is running on: ${environment.application.uri}`);
+    console.log(environment.db);
+});

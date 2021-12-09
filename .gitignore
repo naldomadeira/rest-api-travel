@@ -1,5 +1,13 @@
-node_modules/
+node_modules
 yarn-error.log
 .env
+.env.debug
+.env
+.env.development
 swagger.txt
 
+# IDE's
+.idea
+.vscode
+
+.docker

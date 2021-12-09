@@ -1,113 +1,83 @@
-import Hotel from '../models/Hotel'
-import Room from '../models/Room'
+import HotelBusiness from '../business/HotelBusiness';
 
 class HotelController {
-  async index(req, res) {
-    // #swagger.tags = ['Hotel']
+    async index(req, res) {
+        // #swagger.tags = ['Hotel']
 
-    try {
-      const hotels = await Hotel.findAll({
-        include: [
-          {
-            model: Room,
-            as: 'rooms',
-            attributes: ['id', 'name'],
-          },
-        ],
-      })
-      return res.status(200).json(hotels)
-    } catch (err) {
-      return res.status(500).send({ message: `Erro retrieve all items` })
+        try {
+            const hotels = await HotelBusiness.index();
+
+            return res.status(200).json(hotels);
+        } catch (err) {
+            return res
+                .status(500)
+                .send({ message: `Error retrieve all items` });
+        }
     }
-  }
 
-  async store(req, res) {
-    // #swagger.tags = ['Hotel']
-    /*    #swagger.parameters['obj'] = {
+    async store(req, res) {
+        // #swagger.tags = ['Hotel']
+        /*    #swagger.parameters['obj'] = {
                 in: 'body',
                 description: "Adding new Hotel.",
                 schema: { $ref: "#/definitions/Hotel" }
         } */
 
-    try {
-      const hotel = await Hotel.create(req.body)
-      return res.status(201).json(hotel)
-    } catch (err) {
-      return res.status(500).send({ message: `Erro store a item` })
+        try {
+            const hotel = await HotelBusiness.store(req.body);
+
+            return res.status(201).json(hotel);
+        } catch (err) {
+            return res.status(500).send({ message: `Error inserting an item` });
+        }
     }
-  }
 
-  async show(req, res) {
-    // #swagger.tags = ['Hotel']
+    async show(req, res) {
+        // #swagger.tags = ['Hotel']
 
-    try {
-      const HotelExist = await Hotel.findByPk(req.params.id, {
-        include: [
-          {
-            model: Room,
-            as: 'rooms',
-            attributes: ['id', 'name'],
-          },
-        ],
-      })
-      if (!HotelExist) {
-        return res.status(400).json({ error: "hotel don't exist'" })
-      }
+        const { id } = req.params;
 
-      return res.status(200).json(HotelExist)
-    } catch (err) {
-      return res.status(500).send({ message: `Erro retrieving a item` })
+        try {
+            const hotel = await HotelBusiness.show(id);
+
+            return res.status(200).json(hotel);
+        } catch (err) {
+            return res
+                .status(500)
+                .send({ message: `Error retrieving an item` });
+        }
     }
-  }
 
-  async update(req, res) {
-    // #swagger.tags = ['Hotel']
+    async update(req, res) {
+        // #swagger.tags = ['Hotel']
 
-    const id = req.params.id
+        const { id } = req.params;
+        const hotelDocument = req.body;
 
-    try {
-      const HotelExist = await Hotel.findByPk(req.params.id)
-      if (!HotelExist) {
-        return res.status(400).json({ error: "hotel don't exist'" })
-      }
+        try {
+            const hotel = await HotelBusiness.update(id, hotelDocument);
 
-      await Hotel.update(req.body, {
-        where: { id: id },
-      })
-      return res
-        .status(200)
-        .send(`item with id=${id} was updated successfully!`)
-    } catch (err) {
-      return res
-        .status(500)
-        .send({ message: 'Error update item agent information' })
+            return res.status(200).json(hotel);
+        } catch (err) {
+            return res.status(500).send({ message: 'Error updating an item' });
+        }
     }
-  }
 
-  async destroy(req, res) {
-    // #swagger.tags = ['Hotel']
+    async destroy(req, res) {
+        // #swagger.tags = ['Hotel']
 
-    const id = req.params.id
+        const { id } = req.params;
 
-    try {
-      const HotelExist = await Hotel.findByPk(req.params.id)
-      if (!HotelExist) {
-        return res.status(400).json({ error: "hotel don't exist'" })
-      }
+        try {
+            await HotelBusiness.destroy(id);
 
-      await Hotel.destroy({
-        where: { id: id },
-      })
-
-      return res.status(204).send({
-        message: `item with id=${id} was deleted successfully!`,
-      })
-    } catch (err) {
-      return res.status(500).send({
-        message: `Could not delete item with id=${id}`,
-      })
+            return res.status(204).send();
+        } catch (err) {
+            return res.status(500).send({
+                message: `Couldn't delete item with id=${id}`,
+            });
+        }
     }
-  }
 }
 
-export default new HotelController()
+export default new HotelController();
