@@ -224,7 +224,7 @@ class OfferBusiness {
         const valueCurrencyService = service.coin.value;
         const valueCurrentyCustomer = customer.coin.value;
 
-        let exchange = valueCurrencyService * valueCurrentyCustomer;
+        let exchange = valueCurrencyService / valueCurrentyCustomer;
         exchange += exchange * profit;
         // calculates the conversion value with the margin profit
 

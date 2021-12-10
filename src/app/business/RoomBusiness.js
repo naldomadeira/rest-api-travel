@@ -15,7 +15,7 @@ class RoomBusiness {
     }
 
     index() {
-        return Room.findAll(relationships);
+        return Room.findAll(this.relationships);
     }
 
     store(roomDocument) {
@@ -23,7 +23,7 @@ class RoomBusiness {
     }
 
     async show(roomId) {
-        const roomSearched = await this.findOrFail(roomId, relationships);
+        const roomSearched = await this.findOrFail(roomId, this.relationships);
 
         return roomSearched;
     }

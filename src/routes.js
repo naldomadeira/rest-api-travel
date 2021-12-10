@@ -11,7 +11,7 @@ import HotelCategoryProfitController from './app/controllers/HotelCategoryProfit
 import ExchangeController from './app/controllers/ExchangeController';
 import OfferController from './app/controllers/OfferController';
 import ExchangeProfitController from './app/controllers/ExchangeProfitController';
-import CurrencyApiController from './app/controllers/CurrencyApiController';
+import CurrencyController from './app/controllers/CurrencyController';
 
 const router = new Router();
 
@@ -25,10 +25,7 @@ router.post('/coins', CoinController.store);
 router.get('/coins/:id', CoinController.show);
 router.put('/coins/:id', CoinController.update);
 router.delete('/coins/:id', CoinController.destroy);
-router.put(
-    '/coins/update_values_internet',
-    CurrencyApiController.updateAllCoins
-);
+router.put('/coins/update/currencies', CurrencyController.updateAllCoins);
 
 // exchange profit
 router.post('/exchange_profit', ExchangeProfitController.store);

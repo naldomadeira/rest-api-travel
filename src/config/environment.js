@@ -40,6 +40,11 @@ const environment = {
             underscoredAll: true,
         },
     },
+    api: {
+        europeanBanking: {
+            endpoint: process.env.URI_EUROPEAN_BANK,
+        },
+    },
 };
 
 module.exports = environment;
