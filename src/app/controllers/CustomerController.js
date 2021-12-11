@@ -1,21 +1,19 @@
 import CustomerBusiness from '../business/CustomerBusiness';
 
 class CustomerController {
-    async index(req, res) {
+    async index(req, res, next) {
         // #swagger.tags = ['Customer']
 
         try {
             const customers = await CustomerBusiness.index();
 
             return res.status(200).json(customers);
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieve all items` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async store(req, res) {
+    async store(req, res, next) {
         // #swagger.tags = ['Customer']
         /*    #swagger.parameters['obj'] = {
                 in: 'body',
@@ -27,12 +25,12 @@ class CustomerController {
             const customer = await CustomerBusiness.store(req.body);
 
             return res.status(201).json(customer);
-        } catch (err) {
-            return res.status(500).send({ message: `Error inserting an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async show(req, res) {
+    async show(req, res, next) {
         // #swagger.tags = ['Customer']
 
         const { id } = req.params;
@@ -41,14 +39,12 @@ class CustomerController {
             const customer = await CustomerBusiness.show(id);
 
             return res.status(200).json(customer);
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieving an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async update(req, res) {
+    async update(req, res, next) {
         // #swagger.tags = ['Customer']
 
         const { id } = req.params;
@@ -61,12 +57,12 @@ class CustomerController {
             );
 
             return res.status(200).json(customer);
-        } catch (err) {
-            return res.status(500).send({ message: 'Error updating an item' });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async destroy(req, res) {
+    async destroy(req, res, next) {
         // #swagger.tags = ['Customer']
 
         const { id } = req.params;
@@ -75,10 +71,8 @@ class CustomerController {
             await CustomerBusiness.destroy(id);
 
             return res.status(204).send();
-        } catch (err) {
-            return res.status(500).send({
-                message: `Couldn't delete item with id=${id}`,
-            });
+        } catch (error) {
+            next(error);
         }
     }
 }

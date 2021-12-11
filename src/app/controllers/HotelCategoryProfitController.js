@@ -1,21 +1,19 @@
 import HotelCategoryBusiness from '../business/HotelCategoryBusiness';
 
 class HotelCategoryProfitController {
-    async index(req, res) {
+    async index(req, res, next) {
         // #swagger.tags = ['HotelCategoryAgent']
 
         try {
             const items = await HotelCategoryBusiness.index();
 
             return res.status(200).json(items);
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieve all items` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async store(req, res) {
+    async store(req, res, next) {
         // #swagger.tags = ['HotelCategoryAgent']
         /*#swagger.parameters['obj'] = {
                 in: 'body',
@@ -27,12 +25,12 @@ class HotelCategoryProfitController {
             const hotelCategory = await HotelCategoryBusiness.store(req.body);
 
             return res.status(201).json(hotelCategory);
-        } catch (err) {
-            return res.status(500).send({ message: `Error inserting an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async show(req, res) {
+    async show(req, res, next) {
         // #swagger.tags = ['HotelCategoryAgent']
 
         const { id } = req.params;
@@ -41,14 +39,12 @@ class HotelCategoryProfitController {
             const hotelCategory = await HotelCategoryBusiness.show(id);
 
             return res.status(200).json(hotelCategory);
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieving an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async update(req, res) {
+    async update(req, res, next) {
         // #swagger.tags = ['HotelCategoryAgent']
 
         const { id } = req.params;
@@ -61,12 +57,12 @@ class HotelCategoryProfitController {
             );
 
             return res.status(200).json(hotelCategory);
-        } catch (err) {
-            return res.status(500).send({ message: 'Error updating an item' });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async destroy(req, res) {
+    async destroy(req, res, next) {
         // #swagger.tags = ['HotelCategoryAgent']
 
         const { id } = req.params;
@@ -75,10 +71,8 @@ class HotelCategoryProfitController {
             await HotelCategoryBusiness.destroy(id);
 
             return res.status(204).send();
-        } catch (err) {
-            return res.status(500).send({
-                message: `Couldn't delete item with id=${id}`,
-            });
+        } catch (error) {
+            next(error);
         }
     }
 }

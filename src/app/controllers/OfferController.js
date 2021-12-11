@@ -3,11 +3,16 @@ import Service from '../models/Service';
 import Offer from '../models/Offer';
 
 class OfferController {
-    async index(req, res) {
+    async index(req, res, next) {
         // #swagger.tags = ['Offer']
-        const offers = await OfferBusiness.index();
 
-        return res.json(offers);
+        try {
+            const offers = await OfferBusiness.index();
+
+            return res.status(200).json(offers);
+        } catch (error) {
+            next(error);
+        }
     }
 
     async store(req, res, next) {
@@ -21,15 +26,15 @@ class OfferController {
             const offer = await OfferBusiness.store(req.body);
 
             return res.status(201).json(offer);
-        } catch (err) {
-            return res.status(500).send({ message: `Error inserting an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
     /**
      * this method only updates the payment status
      */
-    async update(req, res) {
+    async update(req, res, next) {
         // #swagger.tags = ['Offer']
 
         const id = req.params.id;
@@ -53,14 +58,12 @@ class OfferController {
                     .status(500)
                     .send({ message: 'Error update paid offer' });
             }
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: 'Error update item information' });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async destroy(req, res) {
+    async destroy(req, res, next) {
         // #swagger.tags = ['Offer']
 
         const { id } = req.params;
@@ -69,10 +72,8 @@ class OfferController {
             await OfferBusiness.destroy(id);
 
             return res.status(204).send();
-        } catch (err) {
-            return res.status(500).send({
-                message: `Couldn't delete item with id=${id}`,
-            });
+        } catch (error) {
+            next(error);
         }
     }
 }

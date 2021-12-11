@@ -1,20 +1,18 @@
 import CoinBusiness from '../business/CoinBusiness';
 
 class CoinController {
-    async index(req, res) {
+    async index(req, res, next) {
         // #swagger.tags = ['Coin']
         try {
             const coins = await CoinBusiness.index();
 
             return res.status(200).json(coins);
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieve all items` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async store(req, res) {
+    async store(req, res, next) {
         // #swagger.tags = ['Coin']
         /*    #swagger.parameters['obj'] = {
                 in: 'body',
@@ -25,12 +23,12 @@ class CoinController {
             const coin = await CoinBusiness.store(req.body);
 
             return res.status(201).json(coin);
-        } catch (err) {
-            return res.status(500).send({ message: `Error inserting an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async show(req, res) {
+    async show(req, res, next) {
         // #swagger.tags = ['Coin']
 
         const { id } = req.params;
@@ -39,12 +37,12 @@ class CoinController {
             const coin = await CoinBusiness.show(id);
 
             return res.status(200).json(coin);
-        } catch (err) {
-            return res.status(500).send({ message: `Erro retrieving a item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async update(req, res) {
+    async update(req, res, next) {
         // #swagger.tags = ['Coin']
         const { id } = req.params;
         const coinDocument = req.body;
@@ -53,12 +51,12 @@ class CoinController {
             const coin = await CoinBusiness.update(id, coinDocument);
 
             return res.status(200).send(coin);
-        } catch (err) {
-            return res.status(500).send({ message: 'Error updating an item' });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async destroy(req, res) {
+    async destroy(req, res, next) {
         // #swagger.tags = ['Coin']
 
         const { id } = req.params;
@@ -67,10 +65,8 @@ class CoinController {
             await CoinBusiness.destroy(id);
 
             return res.status(204).send();
-        } catch (err) {
-            return res.status(500).send({
-                message: `Couldn't delete item with id=${id}`,
-            });
+        } catch (error) {
+            next(error);
         }
     }
 }

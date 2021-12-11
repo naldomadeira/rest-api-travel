@@ -3,5 +3,4 @@ import app from './application';
 
 app.listen(environment.application.port, () => {
     console.log(`Server is running on: ${environment.application.uri}`);
-    console.log(environment.db);
 });

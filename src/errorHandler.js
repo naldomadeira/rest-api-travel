@@ -26,9 +26,14 @@ export default (error, req, res, next) => {
         code = NOT_FOUND;
         message = errorMessage(error);
     }
-    if (error) {
-        res.status(code).json({ code, message });
+
+    if (error.isAxiosError) {
+        code = error.response.status;
+        message =
+            error.response.data && error.response.data.developerMessage
+                ? error.response.data.developerMessage
+                : error.response.statusText;
     }
 
-    next();
+    res.status(code).json({ code, message });
 };

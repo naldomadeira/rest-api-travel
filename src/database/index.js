@@ -28,10 +28,6 @@ const models = [
 ];
 
 class Database {
-    constructor() {
-        this.init();
-    }
-
     init() {
         this.connection = new Sequelize(environment.db);
 

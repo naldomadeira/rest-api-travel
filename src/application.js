@@ -3,14 +3,16 @@ import express from 'express';
 import routes from './routes';
 import swaggerUi from 'swagger-ui-express';
 import swaggerFile from '../swagger.json';
-
-import './database';
+import errorHandler from './errorHandler';
+import db from './database';
 class App {
     constructor() {
         this.server = express();
 
         this.middlewares();
         this.routes();
+        this.initErrorHandler();
+        this.initDatabase();
     }
 
     middlewares() {
@@ -25,6 +27,14 @@ class App {
 
     routes() {
         this.server.use('/api/v1', routes);
+    }
+
+    initErrorHandler() {
+        this.server.use(errorHandler);
+    }
+
+    initDatabase() {
+        db.init();
     }
 }
 

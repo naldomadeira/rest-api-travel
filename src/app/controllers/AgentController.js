@@ -1,21 +1,19 @@
 import AgentBusiness from '../business/AgentBusiness';
 
 class AgentController {
-    async index(req, res) {
+    async index(req, res, next) {
         // #swagger.tags = ['Agent']
 
         try {
             const agents = await AgentBusiness.index();
 
             return res.status(200).json(agents);
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieve all items` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async store(req, res) {
+    async store(req, res, next) {
         // #swagger.tags = ['Agent']
         /*   #swagger.parameters['obj'] = {
               in: 'body',
@@ -27,12 +25,12 @@ class AgentController {
             const agent = await AgentBusiness.store(req.body);
 
             return res.status(201).json(agent);
-        } catch (err) {
-            return res.status(500).send({ message: `Error inserting an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async show(req, res) {
+    async show(req, res, next) {
         // #swagger.tags = ['Agent']
         const { id } = req.params;
 
@@ -40,14 +38,12 @@ class AgentController {
             const agent = await AgentBusiness.show(id);
 
             return res.status(200).json(agent);
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieving an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async update(req, res) {
+    async update(req, res, next) {
         // #swagger.tags = ['Agent']
         const { id } = req.params;
         const agentDocument = req.body;
@@ -56,12 +52,12 @@ class AgentController {
             const agent = await AgentBusiness.update(id, agentDocument);
 
             return res.status(200).send(agent);
-        } catch (err) {
-            return res.status(500).send({ message: 'Error updating an item' });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async destroy(req, res) {
+    async destroy(req, res, next) {
         // #swagger.tags = ['Agent']
         const { id } = req.params.id;
 
@@ -69,10 +65,8 @@ class AgentController {
             await AgentBusiness.destroy(id);
 
             return res.status(204).send();
-        } catch (err) {
-            return res.status(500).send({
-                message: `Couldn't delete item with id=${id}`,
-            });
+        } catch (error) {
+            next(error);
         }
     }
 }

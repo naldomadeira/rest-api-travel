@@ -1,21 +1,19 @@
 import ExchangeBusiness from '../business/ExchangeBusiness';
 
 class ExchangeController {
-    async index(req, res) {
+    async index(req, res, next) {
         // #swagger.tags = ['Exchange']
 
         try {
             const exchanges = await ExchangeBusiness.index();
 
             return res.status(200).json(exchanges);
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieve all items` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async destroy(req, res) {
+    async destroy(req, res, next) {
         // #swagger.tags = ['Exchange']
 
         const { id } = req.params;
@@ -24,10 +22,8 @@ class ExchangeController {
             await ExchangeBusiness.destroy(id);
 
             return res.status(204).send();
-        } catch (err) {
-            return res.status(500).send({
-                message: `Couldn't delete item with id=${id}`,
-            });
+        } catch (error) {
+            next(error);
         }
     }
 }

@@ -1,21 +1,19 @@
 import ServiceBusiness from '../business/ServiceBusiness';
 
 class ServiceController {
-    async index(req, res) {
+    async index(req, res, next) {
         // #swagger.tags = ['Service']
 
         try {
             const services = await ServiceBusiness.index();
 
             return res.status(200).json(services);
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieve all items` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async store(req, res) {
+    async store(req, res, next) {
         // #swagger.tags = ['Service']
         /* #swagger.parameters['obj'] = {
                 in: 'body',
@@ -27,12 +25,12 @@ class ServiceController {
             const service = await ServiceBusiness.store(req.body);
 
             return res.status(201).json(service);
-        } catch (err) {
-            return res.status(500).send({ message: `Error inserting an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async show(req, res) {
+    async show(req, res, next) {
         // #swagger.tags = ['Service']
 
         const { id } = req.params;
@@ -41,14 +39,12 @@ class ServiceController {
             const service = await ServiceBusiness.show(id);
 
             return res.status(200).json(service);
-        } catch (err) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieving an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async update(req, res) {
+    async update(req, res, next) {
         // #swagger.tags = ['Service']
 
         const { id } = req.params;
@@ -58,12 +54,12 @@ class ServiceController {
             const service = await ServiceBusiness.update(id, serviceDocument);
 
             return res.status(200).json(service);
-        } catch (err) {
-            return res.status(500).send({ message: 'Error updating an item' });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async destroy(req, res) {
+    async destroy(req, res, next) {
         // #swagger.tags = ['Service']
 
         const { id } = req.params;
@@ -72,10 +68,8 @@ class ServiceController {
             await ServiceBusiness.destroy(id);
 
             return res.status(204).send();
-        } catch (err) {
-            return res.status(500).send({
-                message: `Couldn't delete item with id=${id}`,
-            });
+        } catch (error) {
+            next(error);
         }
     }
 }

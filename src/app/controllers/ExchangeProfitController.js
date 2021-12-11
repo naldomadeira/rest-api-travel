@@ -1,6 +1,6 @@
 import ExchangeProfitBusiness from '../business/ExchangeProfitBusiness';
 class ExchangeProfitController {
-    async store(req, res) {
+    async store(req, res, next) {
         // #swagger.tags = ['ExchangeProfit']
         /*    #swagger.parameters['obj'] = {
                 in: 'body',
@@ -12,12 +12,12 @@ class ExchangeProfitController {
             const exchangeProfit = await ExchangeProfitBusiness.store(req.body);
 
             return res.status(201).json(exchangeProfit);
-        } catch (err) {
-            return res.status(500).send({ message: `Error inserting an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async show(req, res) {
+    async show(req, res, next) {
         // #swagger.tags = ['ExchangeProfit']
 
         const { id } = req.params;
@@ -26,12 +26,12 @@ class ExchangeProfitController {
             const exchangeProfit = await ExchangeProfitBusiness.show(id);
 
             return res.status(200).json(exchangeProfit);
-        } catch (err) {
-            return res.status(500).send({ message: `Erro retrieving an item` });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async update(req, res) {
+    async update(req, res, next) {
         // #swagger.tags = ['ExchangeProfit']
 
         const { id } = req.params;
@@ -44,12 +44,12 @@ class ExchangeProfitController {
             );
 
             return res.status(200).send(exchangeProfit);
-        } catch (err) {
-            return res.status(500).send({ message: 'Error updating an item' });
+        } catch (error) {
+            next(error);
         }
     }
 
-    async destroy(req, res) {
+    async destroy(req, res, next) {
         // #swagger.tags = ['ExchangeProfit']
 
         const { id } = req.params;
@@ -58,10 +58,8 @@ class ExchangeProfitController {
             await ExchangeProfitBusiness.destroy(id);
 
             return res.status(204).send();
-        } catch (err) {
-            return res.status(500).send({
-                message: `Couldn't delete item with id=${id}`,
-            });
+        } catch (error) {
+            next(error);
         }
     }
 }

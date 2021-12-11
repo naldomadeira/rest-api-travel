@@ -1,7 +1,7 @@
 import RoomBusiness from '../business/RoomBusiness';
 
 class RoomController {
-    async index(req, res) {
+    async index(req, res, next) {
         // #swagger.tags = ['Room']
 
         try {
@@ -9,13 +9,11 @@ class RoomController {
 
             return res.status(200).json(rooms);
         } catch (error) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieve all items` });
+            next(error);
         }
     }
 
-    async store(req, res) {
+    async store(req, res, next) {
         // #swagger.tags = ['Room']
         /* #swagger.parameters['obj'] = {
                 in: 'body',
@@ -28,11 +26,11 @@ class RoomController {
 
             return res.status(201).json(room);
         } catch (error) {
-            return res.status(500).send({ message: `Error inserting an item` });
+            next(error);
         }
     }
 
-    async show(req, res) {
+    async show(req, res, next) {
         // #swagger.tags = ['Room']
 
         const { id } = req.params;
@@ -41,13 +39,11 @@ class RoomController {
 
             return res.status(200).json(room);
         } catch (error) {
-            return res
-                .status(500)
-                .send({ message: `Error retrieving an item` });
+            next(error);
         }
     }
 
-    async update(req, res) {
+    async update(req, res, next) {
         // #swagger.tags = ['Room']
 
         const { id } = req.params;
@@ -58,11 +54,11 @@ class RoomController {
 
             return res.status(200).json(room);
         } catch (error) {
-            return res.status(500).send({ message: 'Error updating an item' });
+            next(error);
         }
     }
 
-    async destroy(req, res) {
+    async destroy(req, res, next) {
         // #swagger.tags = ['Room']
 
         const { id } = req.params;
@@ -72,9 +68,7 @@ class RoomController {
 
             return res.status(204).send();
         } catch (error) {
-            return res.status(500).send({
-                message: `Couldn't delete item with id=${id}`,
-            });
+            next(error);
         }
     }
 }
