@@ -1,17 +1,17 @@
 import { Router } from 'express';
 
-import HotelController from './app/controllers/HotelController';
-import RoomController from './app/controllers/RoomController';
-import CoinController from './app/controllers/CoinController';
-import CategoryAgentController from './app/controllers/CategoryAgentController';
-import AgentController from './app/controllers/AgentController';
-import ServiceController from './app/controllers/ServiceController';
-import CustomerController from './app/controllers/CustomerController';
-import HotelCategoryProfitController from './app/controllers/HotelCategoryProfitController';
-import ExchangeController from './app/controllers/ExchangeController';
-import OfferController from './app/controllers/OfferController';
-import ExchangeProfitController from './app/controllers/ExchangeProfitController';
-import CurrencyController from './app/controllers/CurrencyController';
+import HotelController from '../app/controllers/HotelController';
+import RoomController from '../app/controllers/RoomController';
+import CoinController from '../app/controllers/CoinController';
+import CategoryAgentController from '../app/controllers/CategoryAgentController';
+import AgentController from '../app/controllers/AgentController';
+import ServiceController from '../app/controllers/ServiceController';
+import CustomerController from '../app/controllers/CustomerController';
+import HotelCategoryProfitController from '../app/controllers/HotelCategoryProfitController';
+import ExchangeController from '../app/controllers/ExchangeController';
+import OfferController from '../app/controllers/OfferController';
+import ExchangeProfitController from '../app/controllers/ExchangeProfitController';
+import CurrencyController from '../app/controllers/CurrencyController';
 
 const router = new Router();
 

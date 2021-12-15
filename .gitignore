@@ -2,7 +2,7 @@ node_modules
 yarn-error.log
 .env
 .env.debug
-.env
+.env.test
 .env.development
 swagger.txt
 

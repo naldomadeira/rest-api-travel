@@ -1,10 +1,11 @@
 import cors from 'cors';
 import express from 'express';
-import routes from './routes';
+import routes from './routes/routes';
 import swaggerUi from 'swagger-ui-express';
 import swaggerFile from '../swagger.json';
-import errorHandler from './errorHandler';
+import errorHandler from './middlewares/errorHandler';
 import db from './database';
+
 class App {
     constructor() {
         this.server = express();
