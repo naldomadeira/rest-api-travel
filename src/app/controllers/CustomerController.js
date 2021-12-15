@@ -1,121 +1,80 @@
-import Customer from '../models/Customer'
-import Coin from '../models/Coin'
+import CustomerBusiness from '../business/CustomerBusiness';
 
 class CustomerController {
-  async index(req, res) {
-    // #swagger.tags = ['Customer']
+    async index(req, res, next) {
+        // #swagger.tags = ['Customer']
 
-    try {
-      const customers = await Customer.findAll({
-        attributes: ['id', 'name', 'surname', 'address', 'phone', 'country'],
-        include: {
-          model: Coin,
-          as: 'coin',
-          attributes: ['id', 'name', 'symbol'],
-        },
-      })
-      return res.status(200).json(customers)
-    } catch (err) {
-      return res.status(500).send({ message: `Erro retrieve all items` })
+        try {
+            const customers = await CustomerBusiness.index();
+
+            return res.status(200).json(customers);
+        } catch (error) {
+            next(error);
+        }
     }
-  }
 
-  async store(req, res) {
-    // #swagger.tags = ['Customer']
-    /*    #swagger.parameters['obj'] = {
+    async store(req, res, next) {
+        // #swagger.tags = ['Customer']
+        /*    #swagger.parameters['obj'] = {
                 in: 'body',
                 description: "Adding new Customer.",
                 schema: { $ref: "#/definitions/Customer" }
         } */
-    const { coin_id } = req.body
-    try {
-      if (coin_id) {
-        const coinExists = await Coin.findOne({
-          where: {
-            id: coin_id,
-          },
-        })
 
-        if (!coinExists) {
-          return res.status(400).json({ error: "Coin don't exist'" })
+        try {
+            const customer = await CustomerBusiness.store(req.body);
+
+            return res.status(201).json(customer);
+        } catch (error) {
+            next(error);
         }
-      }
-      const customer = await Customer.create(req.body)
-      return res.status(201).json(customer)
-    } catch (err) {
-      return res.status(500).send({ message: `Erro store a item` })
     }
-  }
 
-  async show(req, res) {
-    // #swagger.tags = ['Customer']
+    async show(req, res, next) {
+        // #swagger.tags = ['Customer']
 
-    try {
-      const customerExists = await Customer.findByPk(req.params.id, {
-        include: [
-          {
-            model: Coin,
-            as: 'coin',
-            attributes: ['id', 'name', 'symbol'],
-          },
-        ],
-      })
-      if (!customerExists) {
-        return res.status(400).json({ error: "Coin don't exist'" })
-      }
+        const { id } = req.params;
 
-      return res.status(200).json(customerExists)
-    } catch (err) {
-      return res.status(500).send({ message: `Erro retrieving a item` })
+        try {
+            const customer = await CustomerBusiness.show(id);
+
+            return res.status(200).json(customer);
+        } catch (error) {
+            next(error);
+        }
     }
-  }
 
-  async update(req, res) {
-    // #swagger.tags = ['Customer']
+    async update(req, res, next) {
+        // #swagger.tags = ['Customer']
 
-    const id = req.params.id
+        const { id } = req.params;
+        const customerDocument = req.body;
 
-    try {
-      const customerExists = await Customer.findByPk(req.params.id)
-      if (!customerExists) {
-        return res.status(400).json({ error: "Customer don't exist'" })
-      }
+        try {
+            const customer = await CustomerBusiness.update(
+                id,
+                customerDocument
+            );
 
-      await Customer.update(req.body, {
-        where: { id: id },
-      })
-      return res
-        .status(200)
-        .send(`item with id=${id} was updated successfully!`)
-    } catch (err) {
-      return res.status(500).send({ message: 'Error update item information' })
+            return res.status(200).json(customer);
+        } catch (error) {
+            next(error);
+        }
     }
-  }
 
-  async destroy(req, res) {
-    // #swagger.tags = ['Customer']
+    async destroy(req, res, next) {
+        // #swagger.tags = ['Customer']
 
-    const id = req.params.id
+        const { id } = req.params;
 
-    try {
-      const customerExists = await Customer.findByPk(req.params.id)
-      if (!customerExists) {
-        return res.status(400).json({ error: "Customer don't exist'" })
-      }
+        try {
+            await CustomerBusiness.destroy(id);
 
-      await Customer.destroy({
-        where: { id: id },
-      })
-
-      return res.status(204).send({
-        message: `item with id=${id} was deleted successfully!`,
-      })
-    } catch (err) {
-      return res.status(500).send({
-        message: `Could not delete item with id=${id}`,
-      })
+            return res.status(204).send();
+        } catch (error) {
+            next(error);
+        }
     }
-  }
 }
 
-export default new CustomerController()
+export default new CustomerController();
