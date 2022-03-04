@@ -9,11 +9,6 @@ import db from './database';
 class App {
     constructor() {
         this.server = express();
-
-        this.middlewares();
-        this.routes();
-        this.initErrorHandler();
-        this.initDatabase();
     }
 
     middlewares() {
@@ -37,6 +32,15 @@ class App {
     initDatabase() {
         db.init();
     }
+
+    setup() {
+        this.middlewares();
+        this.routes();
+        this.initErrorHandler();
+        this.initDatabase();
+
+        return this.server;
+    }
 }
 
-export default new App().server;
+export default new App().setup();
