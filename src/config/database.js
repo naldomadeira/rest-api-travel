@@ -1,3 +1,3 @@
-const { db } = require('./environment');
+import { db } from './environment';
 
-module.exports = db;
+export default db;

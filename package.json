@@ -7,6 +7,11 @@
     "dev": "cross-env NODE_ENV=development nodemon src/server",
     "debug": "cross-env NODE_ENV=debug nodemon src/server",
     "lint": "yarn eslint --fix src --ext .js",
+    "migrations:test": "cross-env NODE_ENV=test yarn sequelize db:migrate",
+    "seeds:test": "cross-env NODE_ENV=test yarn sequelize db:seed:all",
+    "test:integration": "cross-env NODE_ENV=test mocha --opts test/integration/mocha.opts test/integration/**/*_spec.js",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "test:watch": "jest --watch",
     "swagger": "node swagger"
   },
   "dependencies": {
@@ -25,13 +30,16 @@
     "xml-to-json-promise": "^0.0.3"
   },
   "devDependencies": {
+    "@sucrase/jest-plugin": "^2.2.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",
+    "jest": "^27.4.5",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
     "sequelize-cli": "^6.2.0",
-    "sucrase": "^3.17.1"
+    "sucrase": "^3.17.1",
+    "supertest": "^6.1.6"
   }
 }

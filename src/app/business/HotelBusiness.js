@@ -1,9 +1,10 @@
 import Hotel from '../models/Hotel';
 import Room from '../models/Room';
+import Business from '../common/business';
 import { NotFound } from '../../errors';
 
 const relationships = {
-    attributes: ['id', 'name', 'country', 'details', 'active'],
+    attributes: ['id', 'name', 'address', 'country', 'details', 'active'],
     include: {
         model: Room,
         as: 'rooms',
@@ -11,19 +12,21 @@ const relationships = {
     },
 };
 
-class HotelBusiness {
-    index() {
-        return Hotel.findAll(relationships);
+class HotelBusiness extends Business {
+    async index() {
+        const hotels = await Hotel.findAll(relationships);
+        return this.envelope(hotels);
     }
 
-    store(hotelDocument) {
-        return Hotel.create(hotelDocument);
+    async store(hotelDocument) {
+        const hotel = await Hotel.create(hotelDocument);
+        return this.envelope(hotel);
     }
 
     async show(hotelId) {
         const hotelSearched = await this.findOrFail(hotelId, relationships);
 
-        return hotelSearched;
+        return this.envelope(hotelSearched);
     }
 
     async update(hotelId, hotelDocument) {

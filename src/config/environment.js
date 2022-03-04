@@ -23,8 +23,9 @@ dotenv.config({ path: path });
 const environment = {
     application: {
         name: process.env.APP_NAME || 'rest-travel-api',
+        version: process.env.VERSION || '1.0.0',
         port: process.env.PORT || 3333,
-        env: process.env.ENV,
+        env: process.env.NODE_ENV,
         uri: process.env.APP_URL,
     },
     db: {
