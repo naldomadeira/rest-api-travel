@@ -80,8 +80,7 @@ class OfferBusiness {
         /**
          * enough if the coins(customer and service) are the same
          */
-        console.log(customer.coin.id);
-        console.log(service.coin.id);
+
         if (customer.coin.id !== service.coin.id) {
             const newService = await this.getServiceWithCoinOfCustomer(
                 service,
@@ -103,7 +102,6 @@ class OfferBusiness {
         total += priceService;
 
         // load the margin profit of the agency on top of the agent
-        console.log(agent);
         let profitAgent = this.getAgentProfit(agent);
         total += priceService * profitAgent;
 

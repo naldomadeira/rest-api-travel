@@ -33,7 +33,7 @@ describe('Routes: Hotels', () => {
     describe('GET /hotels', () => {
         it('should return a list of hotels and return 200 as status code', async () => {
             const response = await request.get(`${pathBaseHotel}`);
-            console.log(response.body);
+
             expect(response.status).toEqual(OK);
             expect(response.body).toMatchObject([expectedHotel]);
         });
