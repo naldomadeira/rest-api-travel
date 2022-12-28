@@ -1,45 +1,45 @@
 {
-  "name": "rest-api-travel",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon src/server",
-    "debug": "cross-env NODE_ENV=debug nodemon src/server",
-    "lint": "yarn eslint --fix src --ext .js",
-    "migrations:test": "cross-env NODE_ENV=test yarn sequelize db:migrate",
-    "seeds:test": "cross-env NODE_ENV=test yarn sequelize db:seed:all",
-    "test:integration": "cross-env NODE_ENV=test mocha --opts test/integration/mocha.opts test/integration/**/*_spec.js",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "test:watch": "jest --watch",
-    "swagger": "node swagger"
-  },
-  "dependencies": {
-    "axios": "^0.21.1",
-    "cors": "^2.8.5",
-    "cross-env": "^7.0.3",
-    "date-fns": "^2.0.0-beta.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "http-status": "^1.5.0",
-    "pg": "^8.5.1",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^6.5.1",
-    "swagger-autogen": "^2.7.3",
-    "swagger-ui-express": "^4.1.6",
-    "xml-to-json-promise": "^0.0.3"
-  },
-  "devDependencies": {
-    "@sucrase/jest-plugin": "^2.2.0",
-    "eslint": "^7.22.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "jest": "^27.4.5",
-    "nodemon": "^2.0.7",
-    "prettier": "^2.2.1",
-    "sequelize-cli": "^6.2.0",
-    "sucrase": "^3.17.1",
-    "supertest": "^6.1.6"
-  }
+    "name": "rest-api-travel",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development nodemon src/server",
+        "debug": "cross-env NODE_ENV=debug nodemon src/server",
+        "lint": "yarn eslint --fix src --ext .js",
+        "migrations:test": "cross-env NODE_ENV=test yarn sequelize db:migrate",
+        "seeds:test": "cross-env NODE_ENV=test yarn sequelize db:seed:all",
+        "test:integration": "cross-env NODE_ENV=test mocha --opts test/integration/mocha.opts test/integration/**/*_spec.js",
+        "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+        "test:watch": "jest --watch",
+        "swagger": "node swagger"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "cors": "^2.8.5",
+        "cross-env": "^7.0.3",
+        "date-fns": "^2.0.0-beta.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "http-status": "^1.5.0",
+        "pg": "^8.5.1",
+        "pg-hstore": "^2.3.3",
+        "sequelize": "^6.6.2",
+        "swagger-autogen": "^2.7.3",
+        "swagger-ui-express": "^4.1.6",
+        "xml-to-json-promise": "^0.0.3",
+        "sequelize-cli": "^6.2.0"
+    },
+    "devDependencies": {
+        "@sucrase/jest-plugin": "^2.2.0",
+        "eslint": "^7.22.0",
+        "eslint-config-prettier": "^8.1.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-prettier": "^3.3.1",
+        "jest": "^27.4.5",
+        "nodemon": "^2.0.7",
+        "prettier": "^2.2.1",
+        "sucrase": "^3.17.1",
+        "supertest": "^6.1.6"
+    }
 }
