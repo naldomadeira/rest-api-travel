@@ -51,13 +51,13 @@ $ docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgre
 
 3. After configuring and creating the database,execute migrations
 
-3.1. Run the script create the database with the name traveldb in the container named database
+  3.1. Run the script create the database with the name traveldb in the container named database
 
 ```sh
 $ docker exec -it database psql -U postgres -c "CREATE DATABASE traveldb;"
 $ docker exec -it database psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE postgres TO postgres;"
 ```
-3.2. Run sequelize-cli to run the migrations
+  3.2. Run sequelize-cli to run the migrations
 ```sh
 $ yarn sequelize db:migrate
 ```
